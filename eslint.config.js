@@ -8,7 +8,8 @@ import { FlatCompat } from '@eslint/eslintrc';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-// Recreate __dirname for FlatCompat
+import reactCompiler from 'eslint-plugin-react-compiler';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -24,18 +25,19 @@ export default [
   ...tseslint.configs.recommended,
   ...compat.extends('plugin:react/recommended', 'plugin:react/jsx-runtime'),
   {
+    files: ['**/*.{ts,tsx}'],
     plugins: {
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
+      'react-compiler': reactCompiler,
     },
     rules: {
+      'react/jsx-pascal-case': 'error',
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
       'react-refresh/only-export-components': 'warn',
+      'react-compiler/react-compiler': 'error',
     },
-  },
-  eslintPluginPrettierRecommended,
-  {
     languageOptions: {
       globals: {
         ...globals.browser,
@@ -48,4 +50,5 @@ export default [
       },
     },
   },
+  eslintPluginPrettierRecommended,
 ];
