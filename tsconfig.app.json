@@ -27,6 +27,24 @@
     "paths": {
       "@/*": [
         "src/*"
+      ],
+      "@/assets/*": [
+        "src/assets/*"
+      ],
+      "@/component/*": [
+        "src/component/*"
+      ],
+      "@/page/*": [
+        "src/page/*"
+      ],
+      "@/route/*": [
+        "src/route/*"
+      ],
+      "@/store/*": [
+        "src/store/*"
+      ],
+      "@/type/*": [
+        "src/type/*"
       ]
     }
   },
